@@ -5,9 +5,9 @@ import HomeScreen from "./screens/main-screen";
 import HouseScreen from "./screens/controls-screen";
 
 const App = createStackNavigator({
-  //Login: { screen: Login },
-  HouseControls: { screen: HouseScreen },
-  //Home: { screen: HomeScreen }
+  Login: { screen: Login },
+  Home: { screen: HomeScreen },
+  HouseControls: { screen: HouseScreen }
 });
 
 export default App;

@@ -2,7 +2,7 @@ import * as React from "react";
 import { Button, Text, TextInput, View, ImageBackground } from "react-native";
 
 import styles from "./styles";
-import imageLogin from "../../assets/icons/houseLogin.png";
+import imageLogin from "../../assets/icons/houseLogin.gif";
 
 export default class Login extends React.Component {
   static navigationOptions = {
@@ -17,10 +17,15 @@ export default class Login extends React.Component {
       isLoading: false,
       message: ""
     };
+    this.userInput = React.createRef();
+    this.passwordInput = React.createRef();
   }
 
   _onLoginPressed = () => {
     if (this.state.userString == "Yo" && this.state.passwordString == "123") {
+      this.setState({ userString: "", passwordString: "", message: "" });
+      this.userInput.current.clear();
+      this.passwordInput.current.clear();
       this.props.navigation.navigate("Home");
     } else {
       this.setState({
@@ -56,6 +61,7 @@ export default class Login extends React.Component {
               placeholder="Usuario"
               placeholderTextColor="#666666"
               onChange={this._onUserTextChanged}
+              ref={this.userInput}
             />
 
             <TextInput
@@ -65,6 +71,7 @@ export default class Login extends React.Component {
               placeholderTextColor="#666666"
               secureTextEntry={true}
               onChange={this._onPasswordTextChanged}
+              ref={this.passwordInput}
             />
             <View style={styles.buttonLogin}>
               <Button onPress={this._onLoginPressed} title="Login" />
