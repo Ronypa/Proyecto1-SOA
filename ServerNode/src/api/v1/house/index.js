@@ -1,21 +1,30 @@
 import boom from 'boom'
-import PiCamera from 'pi-camera'
-import Gpio from 'pigpio'
+// import Gpio from 'pigpio'
+import NodeWebcam from 'node-webcam'
+import util from 'util'
 import Door from '../../../models/door'
 
-const myCamera = new PiCamera({
-	mode: 'photo',
-	output: `${ __dirname }/test.jpg`,
-	width: 640,
-	height: 480,
-	nopreview: true,
-})
+const takePhoto = util.promisify(NodeWebcam.capture)// Convert callback in promise
+
+const option = {
+	callbackReturn: 'base64',
+}
+
+let intruder = 0
 
 // const bathDoor = new Gpio(10, { mode: Gpio.OUTPUT })
 // const mainDoor = new Gpio(11, { mode: Gpio.OUTPUT })
+// const motionSensor = new Gpio(12, { mode: Gpio.INPUT })
+
+setInterval(() => { // Detect intruder
+	/* let detected = motionSensor.digitalRead()
+	if (detected == 1){
+		intruder = 1
+	} */
+}, 5000)// Time in ms
 
 
-function createDoorRoutes(server) {
+function createHouseRoutes(server) {
 	server.route([
 		{// Get doors state
 			method: 'GET',
@@ -61,15 +70,21 @@ function createDoorRoutes(server) {
 		{// Take picture
 			method: 'GET',
 			path: '/api/v1/house/camera',
-			handler(request, reply) {
-				myCamera.snap()
-					.then(result => reply.file('/home/raulaq/lock.png'))
-					.catch((error) => {
-						console.log(error)
-					})
+			handler: async () => {
+				const photo = await takePhoto('test_picture', option)
+				return { image: photo }
+			},
+		},
+		{// Get sensor state
+			method: 'GET',
+			path: '/api/v1/house/intruder',
+			handler() {
+				const state = intruder
+				intruder = 0
+				return { state }
 			},
 		},
 	])
 }
 
-export default createDoorRoutes
+export default createHouseRoutes

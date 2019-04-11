@@ -8,8 +8,7 @@ mongoose.set('useFindAndModify', false)
 
 // Create a server with a host and port
 const server = Hapi.server({
-	host: 'localhost',
-	port: 8084,
+	port: 8080,
 })
 
 // Add routes
