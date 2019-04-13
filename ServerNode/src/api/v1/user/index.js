@@ -22,7 +22,9 @@ function createUserRoutes(server) {
 				const { fullName, username, password } = request.payload
 				const state = await User.find({ username })
 				if (state.length) throw boom.badRequest('Username already in use, please choose another username')
-				const user = new User({ fullName, username, password })
+				const user = new User({
+					fullName, username, password, interval: 60,
+				})
 				return user.save()
 			},
 		},
@@ -35,6 +37,20 @@ function createUserRoutes(server) {
 				if (!state.length) throw boom.badRequest('Old password incorrect')
 				const result = await User.findOneAndUpdate(
 					{ username: request.payload.username }, { password: newPassword },
+				)
+				if (result === null) throw boom.badRequest('Incorrect, try again later')
+				return result
+			},
+		},
+		{// Set interval
+			method: 'POST',
+			path: '/api/v1/user/interval',
+			handler: async (request) => {
+				const { username, interval } = request.payload
+				const state = await User.find({ username })
+				if (!state.length) throw boom.badRequest('Incorrect operation')
+				const result = await User.findOneAndUpdate(
+					{ username: request.payload.username }, { interval },
 				)
 				if (result === null) throw boom.badRequest('Incorrect, try again later')
 				return result

@@ -21,7 +21,7 @@ const start = async function startServer() {
 	try {
 		// Connect to mongo instance
 		console.log('Connecting to database')
-		await mongoose.connect('mongodb+srv://rolo:18001801a@cluster0-rnvr7.mongodb.net/test?retryWrites=true',
+		await mongoose.connect('mongodb+srv://rolo:18001801a@cluster0-tz29j.mongodb.net/test?retryWrites=true',
 			{ useNewUrlParser: true })
 
 		await mongoose.connection.once('open', () => {
