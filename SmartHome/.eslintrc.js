@@ -14,14 +14,14 @@ module.exports = {
     'global-require': 0,
     'no-useless-escape': 0,
     'template-curly-spacing': 0,
-    indent: 0,
     'no-restricted-syntax': ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
     'no-underscore-dangle': 0,
-    'react/destructuring-assignment': 0,
-    'react/no-access-state-in-setstate': 0,
-    'no-console': 0,
-    "indent": [2, "tab", {"SwitchCase": 1}],
-    "no-tabs": 0,
+    'react/destructuring-assignment':0,
+    'react/no-access-state-in-setstate':0,
+    'no-console':0,
+    "indent": ["error", 4],
+    "react/jsx-indent": ["error", 4],
+    "react/jsx-indent-props": ["error", 4]
   },
   settings: {
     'import/resolver': {
