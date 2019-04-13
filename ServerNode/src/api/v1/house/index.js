@@ -37,7 +37,7 @@ function createHouseRoutes(server) {
 		{// Add door
 			method: 'POST',
 			path: '/api/v1/house/door',
-			handler(request) {
+			handler: async (request) => {
 				const {
 					description, id, state, lockable, locked, lockedBy,
 				} = request.payload
