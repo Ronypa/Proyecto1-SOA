@@ -1,41 +1,42 @@
-import React from "react";
-import { Image, TouchableOpacity, FlatList, View, Alert } from "react-native";
+import React from 'react'
+import {
+ Image, TouchableOpacity, FlatList, View,
+} from 'react-native'
 
-import styles from "./styles";
-import optionsImage from "../../assets/icons/options.png";
-import houseImage from "../../assets/icons/houseSecurity.png";
+import styles from './styles'
+import optionsImage from '../../assets/icons/options.png'
+import houseImage from '../../assets/icons/houseSecurity.png'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: "Home"
+    title: 'Home',
   };
 
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       GridListItems: [
         { key: <Image source={houseImage} style={styles.imageOptions} /> },
-        { key: <Image source={optionsImage} style={styles.imageHouse} /> }
-      ]
-    };
+        { key: <Image source={optionsImage} style={styles.imageHouse} /> },
+      ],
+    }
   }
 
   _onPressHouse = () => {
-    const {params} = this.props.navigation.state
-    console.log(params)
-    this.props.navigation.navigate("HouseControls", {ip: params.ip, userName: params.userName, interval: params.interval});
+    const { params } = this.props.navigation.state
+    this.props.navigation.navigate('HouseControls', { ip: params.ip, userName: params.userName, interval: params.interval })
   };
 
   _onPressOptions = () => {
-    const {params} = this.props.navigation.state
-    
-    this.props.navigation.navigate("Options",{userName: params.userName, ip: params.ip});
+    const { params } = this.props.navigation.state
+
+    this.props.navigation.navigate('Options', { userName: params.userName, ip: params.ip })
   };
 
   _renderItem = ({ item, index }) => {
-    if (index == 0) {
-      //house icon
+    if (index === 0) {
+      // house icon
       return (
         <View>
           <TouchableOpacity
@@ -45,9 +46,9 @@ export default class HomeScreen extends React.Component {
             {item.key}
           </TouchableOpacity>
         </View>
-      );
-    } else {
-      //options icon
+      )
+    }
+      // options icon
       return (
         <View>
           <TouchableOpacity
@@ -57,8 +58,7 @@ export default class HomeScreen extends React.Component {
             {item.key}
           </TouchableOpacity>
         </View>
-      );
-    }
+      )
   };
 
   render() {
@@ -73,6 +73,6 @@ export default class HomeScreen extends React.Component {
           />
         </View>
       </View>
-    );
+    )
   }
 }
