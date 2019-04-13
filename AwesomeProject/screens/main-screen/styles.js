@@ -4,18 +4,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "#e5e5e5",
     backgroundColor: "#125698"
-  },
-  listContainer: {
-    flexDirection: "column",
-    alignItems: "center"
-  },
-  headerText: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10,
-    fontWeight: "bold"
   },
   GridViewContainer: {
     flexGrow: 1,
@@ -37,10 +26,20 @@ export default StyleSheet.create({
     backgroundColor: "#ff1154",
     borderRadius: 25
   },
+  headerText: {
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10,
+    fontWeight: "bold"
+  },
   imageOptions: {
     width: "80%",
     height: "80%",
     resizeMode: "contain"
+  },
+  listContainer: {
+    flexDirection: "column",
+    alignItems: "center"
   },
   imageHouse: {
     width: "80%",

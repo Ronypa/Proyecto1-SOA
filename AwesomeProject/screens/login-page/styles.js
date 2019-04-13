@@ -30,13 +30,6 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-  paragraph: {
-    marginBottom: 20,
-    fontSize: 18,
-    color: "#145264",
-    textAlign: "center",
-    borderRadius: 0
-  },
   buttonLogin: {
     marginTop: "10%",
     width: "25%",

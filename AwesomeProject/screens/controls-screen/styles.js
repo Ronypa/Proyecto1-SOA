@@ -1,40 +1,24 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+  buttonLock: {
+    flexGrow: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    height: 35,
+    backgroundColor: "#777777",
+    width: 35,
+    borderRadius: 50
+  },
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "#e5e5e5",
     backgroundColor: "#125698"
   },
-  cointainerModal: {
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.65)"
-  },
-  //para elemento rosado en gridwiew
   GridViewContainer: {
-    flexGrow: 1,
-    justifyContent: "center",
+    flexDirection: "column",
     alignItems: "center",
-    height: 150,
-    margin: 5,
-    backgroundColor: "#7B1FA2",
-    width: 180,
-    borderRadius: 25
-  },
-  //para elemento rosado en gridwiew
-  GridViewContainer2: {
-    flexGrow: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    height: 150,
-    width: 180,
-    margin: 5,
-    backgroundColor: "#ff1154",
-    borderRadius: 25
+    justifyContent: "flex-end"
   },
   headerText: {
     fontSize: 20,
@@ -60,6 +44,13 @@ export default StyleSheet.create({
     flexDirection: "column",
     alignItems: "center"
   },
+  modalContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.65)"
+  },
   modalCloseButtonContainer: {
     margin: 0,
     padding: 10
@@ -84,6 +75,11 @@ export default StyleSheet.create({
     resizeMode: "contain",
     width: "100%"
   },
+  modalLoadingContainer: {
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center"
+  },
   modalTitle: {
     fontSize: 30,
     color: "#000000"
@@ -99,5 +95,24 @@ export default StyleSheet.create({
     fontSize: 20,
     marginTop: 10,
     color: "black"
-  }
+  },
+  TouchableButton: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: 150,
+    margin: 5,
+    backgroundColor: "#7B1FA2",
+    width: 180,
+    borderRadius: 25
+  },
+  TouchableButton2: {
+    flexGrow: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    height: 150,
+    width: 180,
+    margin: 5,
+    backgroundColor: "#ff1154",
+    borderRadius: 25
+  },
 });

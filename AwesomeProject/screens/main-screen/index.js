@@ -22,11 +22,15 @@ export default class HomeScreen extends React.Component {
   }
 
   _onPressHouse = () => {
-    this.props.navigation.navigate("HouseControls");
+    const {params} = this.props.navigation.state
+    console.log(params)
+    this.props.navigation.navigate("HouseControls", {ip: params.ip, userName: params.userName, interval: params.interval});
   };
 
   _onPressOptions = () => {
-    Alert.alert("Nothing yet! :D");
+    const {params} = this.props.navigation.state
+    
+    this.props.navigation.navigate("Options",{userName: params.userName, ip: params.ip});
   };
 
   _renderItem = ({ item, index }) => {
