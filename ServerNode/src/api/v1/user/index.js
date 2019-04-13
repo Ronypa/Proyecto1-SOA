@@ -29,7 +29,7 @@ function createUserRoutes(server) {
 			},
 		},
 		{// Change password
-			method: 'POST',
+			method: 'PUT',
 			path: '/api/v1/user/password',
 			handler: async (request) => {
 				const { username, password, newPassword } = request.payload
@@ -43,7 +43,7 @@ function createUserRoutes(server) {
 			},
 		},
 		{// Set interval
-			method: 'POST',
+			method: 'PUT',
 			path: '/api/v1/user/interval',
 			handler: async (request) => {
 				const { username, interval } = request.payload

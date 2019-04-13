@@ -41,6 +41,8 @@ function createHouseRoutes(server) {
 				const {
 					description, id, state, lockable, locked, lockedBy,
 				} = request.payload
+				const response = await Door.find({ id })
+				if (response.length) throw boom.badRequest('Door id already in use, please choose another id')
 				const door = new Door({
 					description, id, state, lockable, locked, lockedBy,
 				})
